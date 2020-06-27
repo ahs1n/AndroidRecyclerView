@@ -6,14 +6,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.ProgrammingViewHolder> {
 
-    private String[] data;
+    ArrayList<String> arrayList;
+    private ArrayList data;
 
-    public ProgrammingAdapter(String[] data) {
+    public ProgrammingAdapter(ArrayList data) {
         this.data = data;
     }
 
@@ -27,13 +30,13 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ProgrammingViewHolder holder, int position) {
-        String title = data[position];
+        String title = data.get(position).toString();
         holder.txtTitle.setText(title);
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return data.size();
     }
 
     public class ProgrammingViewHolder extends RecyclerView.ViewHolder {
@@ -43,7 +46,7 @@ public class ProgrammingAdapter extends RecyclerView.Adapter<ProgrammingAdapter.
         public ProgrammingViewHolder(@NonNull View itemView) {
             super(itemView);
             imgIcon = itemView.findViewById(R.id.imgIcon);
-            txtTitle = itemView.findViewById(R.id.txtTitle);
+            txtTitle = itemView.findViewById(R.id.name);
         }
     }
 }
